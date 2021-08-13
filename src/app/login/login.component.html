@@ -1,0 +1,80 @@
+<div id="ElementContainer">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <a href="javascript:void(0)" id="login_signin"
+        ><h2 class="active">Connexion</h2>
+      </a>
+      <a href="javascript:void(0)" id="login_signup"
+        ><h2 class="inactive underlineHover">Inscription</h2></a
+      >
+
+      <div class="formContent">
+        <!-- Login Form -->
+        <form
+          ngForm
+          #loginForm
+          id="loginForm"
+          (submit)="onSubmit($event); loginForm.reset()"
+        >
+          <input
+            type="text"
+            id="login"
+            class="fadeIn second"
+            [(ngModel)]="login"
+            name="login"
+            placeholder="Nom d'utilisateur"
+          />
+          <input
+            type="password"
+            id="password"
+            class="fadeIn third"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Mot de Passe"
+          />
+          <input type="submit" class="fadeIn fourth" value="Log In" />
+        </form>
+
+        <form
+          ngFor
+          #signinForm
+          id="signinForm"
+          class="hidden"
+          (submit)="onSubmitSigninup($event); signinForm.reset()"
+        >
+          <input
+            type="text"
+            id="login"
+            class="fadeIn second"
+            [(ngModel)]="login"
+            name="login"
+            placeholder="Nom d'utilisateur"
+          />
+          <input
+            type="password"
+            id="password"
+            class="fadeIn third"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Mot de passe"
+          />
+          <input
+            type="password"
+            id="password"
+            class="fadeIn third"
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirmer votre Mot de passe"
+          />
+
+          <input type="submit" class="fadeIn fourth" value="S'inscrire" />
+        </form>
+      </div>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Mot de Passe oublié?</a>
+      </div>
+    </div>
+  </div>
+</div>

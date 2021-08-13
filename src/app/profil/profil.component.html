@@ -1,0 +1,28 @@
+<body>
+    <app-header></app-header>
+    <!-- Section-->
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-5">
+        <h2>Mon profil</h2><hr>
+        <!-- <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> -->
+            <ul ngbNav #nav="ngbNav" class="nav-tabs">
+                <li ngbNavItem>
+                  <a ngbNavLink>Informations Personnels</a>
+                  <ng-template ngbNavContent>
+                      <app-infoperso></app-infoperso>
+                  </ng-template>
+                </li>
+                <li ngbNavItem>
+                  <a ngbNavLink>Mes Paris</a>
+                  <ng-template ngbNavContent>
+                    <app-mes-paris></app-mes-paris>
+                  </ng-template>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+    <app-footer></app-footer>
+  </body>
+  

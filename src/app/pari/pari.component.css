@@ -1,0 +1,14 @@
+.content{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 2%;
+}
+.question-circle-text{
+    text-align: left;
+    border-bottom: solid 1px rgba(0,0,0,0.1);    
+}
+.centre{
+    display: flex;
+    justify-content: space-between;
+}

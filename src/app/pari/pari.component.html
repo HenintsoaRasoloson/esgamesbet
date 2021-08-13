@@ -1,0 +1,149 @@
+<form
+  ngForm
+  #pariForm
+  id="loginForm"
+  (submit)="onSubmit($event); pariForm.reset()"
+>
+  <div class="modal-header esg_color">
+    <h5 class="modal-title">Details match {{ current_pari.Match.idMatch }}</h5>
+    <button
+      type="button"
+      class="close"
+      data-dismiss="modal"
+      (click)="closeModal('dismiss')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="centre">
+      <p>
+        <i class="fa fa-gamepad"></i>
+        {{ current_pari.Match.ParticipantMatch.Team1.NomParticipant }}
+        <span class="">Vs</span>
+        {{ current_pari.Match.ParticipantMatch.Team2.NomParticipant }}
+      </p>
+      <p>
+        <i class="fa fa-calendar-check-o"></i>
+        <span class="date_match">
+          {{ current_pari.Match.DateMatch | date: "dd-MM-yyyy HH:mm" }}</span
+        >
+      </p>
+    </div>
+    <div class="modal-content content">
+      <p class="question-circle-text">
+        <i class="fa fa-question-circle"></i> Parier (en MGA)
+      </p>
+      <div class="row form-group">
+        <div class="col-sm-4">
+          <label>{{
+            current_pari.Match.ParticipantMatch.Team1.NomParticipant
+          }}</label>
+          <input
+            type="number"
+            class="form-control"
+            [ngModel]="bet1"
+            id="bet1"
+            name="bet1"
+            min="0"
+            (ngModelChange)="setgainteam1($event)"
+          />
+        </div>
+        <div class="col-sm-4">
+          <label>Egalité</label>
+          <input
+            type="number"
+            class="form-control"
+            [ngModel]="betnul"
+            id="betnul"
+            name="betnul"
+            min="0"
+            (ngModelChange)="setgainnul($event)"
+          />
+        </div>
+        <div class="col-sm-4">
+          <label>{{
+            current_pari.Match.ParticipantMatch.Team2.NomParticipant
+          }}</label>
+          <input
+            type="number"
+            class="form-control"
+            [ngModel]="bet2"
+            id="bet2"
+            name="bet2"
+            min="0"
+            (ngModelChange)="setgainteam2($event)"
+          />
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="modal-content content">
+      <p class="question-circle-text">
+        <i class="fa fa-question-circle"></i> Possibilité de gain (en MGA)
+      </p>
+      <div class="row form-group">
+        <div class="col-sm-4">
+          <label
+            >Si victoire de
+            <i
+              ><b>{{
+                current_pari.Match.ParticipantMatch.Team1.NomParticipant
+              }}</b></i
+            ></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            value="0"
+            min="0"
+            value="{{ gain1 }}"
+            disabled
+          />
+        </div>
+        <div class="col-sm-4">
+          <label>Si Egalité</label>
+          <input
+            type="text"
+            class="form-control"
+            value="0"
+            min="0"
+            value="{{ gainnul }}"
+            disabled
+          />
+        </div>
+        <div class="col-sm-4">
+          <label>
+            Si victoire de
+            <i
+              ><b>
+                {{
+                  current_pari.Match.ParticipantMatch.Team2.NomParticipant
+                }}</b
+              ></i
+            ></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            value="0"
+            min="0"
+            value="{{ gain2 }}"
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-dismiss="modal"
+      (click)="closeModal('close')"
+    >
+      Fermer
+    </button>
+    <button type="submit" class="btn esg_color">Placer mon Pari</button>
+  </div>
+</form>

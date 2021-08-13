@@ -1,0 +1,64 @@
+<div class="modal-header esg_color">
+  <h5 class="modal-title">Votre Panier</h5>
+  <button
+    type="button"
+    class="close"
+    data-dismiss="modal"
+    (click)="closeModal('dismiss')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div *ngFor="let item of Panier; index as i">
+    <div class="card">
+      <div class="card-body row">
+        <div class="col-md-3">
+          <img
+            class="categorie-img"
+            src="../../assets/img/jeu/{{ item.Match.ImageMatch }}"
+            alt="..."
+            width="100%"
+          />
+          <span class="categorie-text"> {{ item.Match.TypeJeu.Categorie.NomCategorie }} </span>
+        </div>
+        <div class="col-md-8">
+          <h5 class="card-title"> {{ item.Match.ParticipantMatch.Team1.NomParticipant }} Vs {{ item.Match.ParticipantMatch.Team2.NomParticipant }}</h5>
+          <p class="card-text">
+            Date : <i>{{ item.Match.DateMatch | date :'dd-MM-yyyy HH:mm'}}</i>
+          </p>
+          <p class="card-text">
+            <i class="fa fa-money"></i> {{item.prediction.team1bet}} {{item.prediction.egalite}} {{item.prediction.team2bet}} Ariary
+          </p>
+        </div>
+         <div class="col-md-1">
+          <button
+          type="button"
+          class="btn btn-secondary pull-right"
+          (click)="RemoveFromCart(i)"
+        >
+          &times;
+        </button>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-secondary"
+    data-dismiss="modal"
+    (click)="closeModal('close')"
+  >
+    Fermer
+  </button>
+  <button
+    type="button"
+    [disabled]="isEmptyCart()"
+    class="btn esg_color"
+    (click)="SavePari('changes saved!')"
+  >
+    Aller à la page de paiement
+  </button>
+</div>
