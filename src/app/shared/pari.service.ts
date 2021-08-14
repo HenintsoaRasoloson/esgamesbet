@@ -10,8 +10,10 @@ import {Match} from '../match/match.model'
 export class PariService {
   Pari:Pari;
   loggeduser = JSON.parse(localStorage.getItem('loggeduser'));
-  uri = 'http://localhost:8010/api/pari';
-  urimesparis = 'http://localhost:8010/api/user/pari/'+this.loggeduser._id;
+  // uri = 'http://localhost:8010/api/pari';
+  // urimesparis = 'http://localhost:8010/api/user/pari/'+this.loggeduser._id;
+  uri = 'https://esgames-bet-back.herokuapp.com/';
+  urimesparis = 'https://esgames-bet-back.herokuapp.com/api/user/pari/'+this.loggeduser._id;
 
   constructor(
     private http:HttpClient
